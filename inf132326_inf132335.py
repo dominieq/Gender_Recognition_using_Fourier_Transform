@@ -13,12 +13,12 @@ def find_main_signal(signal):
     main_signal = []
     for i in range(2,5):
       #chyba nie ta funkcja
-        # signals.append(decimate(signal, i))
-
+        czary = decimate(signal, i)
     return main_signal
 
 def main():
     # wav_file = sys.argv[1]
+    ##############################################################################
     for i in range(2,10,1):
         # w_m, signal_m = scipy.io.wavfile.read('trainall/002_M.wav')
         print(i)
@@ -38,5 +38,11 @@ def main():
                 w, signal = scipy.io.wavfile.read('trainall/0'+repr(i)+'_M.wav')
                 k_czy_m = 'M'
         print('W pliku: '+k_czy_m)
-        main_signal = find_main_signal(signal)
+        if(len(signal.shape) != 1):
+            print('To potem')
+        else:
+            fft_signal = fft(signal)
+            fft_signal.shape
+            main_signal = find_main_signal(fft_signal)
+
 main()
