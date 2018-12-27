@@ -19,7 +19,7 @@ def find_main_signal(signal):
         for j in range( len(decimated[-1]) ):
             processed_signal[j] = processed_signal[j] * decimated[i][j]
 
-    for i in range(len(decimated[3]), len(processed_signal)):
+    for i in range(len(decimated[-1]), len(processed_signal)):
         processed_signal[i] = 0
     return processed_signal
 
