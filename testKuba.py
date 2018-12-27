@@ -24,10 +24,7 @@ def find_main_signal(signal):
     return processed_signal
 
 def main():
-    # wav_file = sys.argv[1]
-
-    kobiety = []
-    faceci = []
+    
     correct_recognitions = 0
     for i in range(2,92):
         if i == 8:
