@@ -24,7 +24,9 @@ def find_main_signal(signal):
     return processed_signal
 
 def main():
-    wavPath = sys.argv[1]
+    warnings.filterwarnings('ignore')
+    
+    wavPath = sys.argv[1]    
 
     try:
         w, signal = scipy.io.wavfile.read(wavPath)
