@@ -25,6 +25,8 @@ def find_main_signal(signal):
 
 def main():
 
+    warnings.filterwarnings('ignore')
+
     correct_recognitions = 0
     for i in range(2, 92):
         if i == 8:
@@ -55,10 +57,10 @@ def main():
 
         fft_signal = abs(fft(signal))
         main_signal = find_main_signal(fft_signal)
-        amp_max = max(main_signal[200:]) # odcinamy te początkowe, bo tam zazwyczaj są nieinteresujące nas wartości
+        amp_max = max(main_signal[180:]) # odcinamy te początkowe, bo tam zazwyczaj są nieinteresujące nas wartości
 
         n = len(main_signal)
-        for i in range(len(main_signal[200:])): 
+        for i in range(len(main_signal[180:])): 
             if amp_max == main_signal[i]:
                 f = i/n*w
                 if f < 160:

@@ -25,7 +25,7 @@ def find_main_signal(signal):
 
 def main():
     warnings.filterwarnings('ignore')
-    
+
     wavPath = sys.argv[1]    
 
     try:
@@ -41,10 +41,10 @@ def main():
 
     fft_signal = abs(fft(signal))
     main_signal = find_main_signal(fft_signal)
-    amp_max = max(main_signal[200:])
+    amp_max = max(main_signal[180:])
 
     n = len(main_signal)
-    for i in range(len(main_signal[200:])): 
+    for i in range(len(main_signal[180:])): 
         if amp_max == main_signal[i]:
             f = i/n*w
             if f < 160:
