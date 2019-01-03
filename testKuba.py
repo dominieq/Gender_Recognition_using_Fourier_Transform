@@ -61,7 +61,7 @@ def main():
         for i in range(len(main_signal[200:])): 
             if amp_max == main_signal[i]:
                 f = i/n*w
-                if f < 150:
+                if f < 160:
                     recognized_gender = 'M'
                 else:
                     recognized_gender = 'K'

@@ -29,7 +29,8 @@ def main():
     try:
         w, signal = scipy.io.wavfile.read(wavPath)
     except:
-        print('    Something went wrong, exiting...')
+        print('    Error while opening file.')
+        sys.exit(1)
 
     if len(signal.shape) != 1:
         signal = [ x[0] for x in signal ]
@@ -44,7 +45,7 @@ def main():
     for i in range(len(main_signal[200:])): 
         if amp_max == main_signal[i]:
             f = i/n*w
-            if f < 150:
+            if f < 160:
                 recognized_gender = 'M'
             else:
                 recognized_gender = 'K'
