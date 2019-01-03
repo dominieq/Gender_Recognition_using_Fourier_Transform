@@ -50,6 +50,7 @@ def main():
         if(len(signal.shape) != 1): # niektóre dźwięki mają dwa kanaly- wybieramy jeden
             signal = [ x[0] for x in signal ]
 
+        # signal = signal * scipy.signal.hamming(len(signal)) # Daje gorszy wynik niż Kaiser z betą 14
         signal = signal * scipy.signal.kaiser(len(signal), 14)
 
         fft_signal = abs(fft(signal))
