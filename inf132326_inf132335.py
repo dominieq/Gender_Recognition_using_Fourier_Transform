@@ -12,7 +12,7 @@ from scipy.signal import decimate
 def find_main_signal(signal):
     processed_signal = signal
     decimated = []
-    for i in range(1, 7):
+    for i in range(2, 6):
         decimated.append(decimate(signal, i))
 
     for i in range( len(decimated)):
@@ -33,6 +33,8 @@ def main():
 
     if len(signal.shape) != 1:
         signal = [ x[0] for x in signal ]
+
+    signal = signal * scipy.signal.kaiser(len(signal), 14)
 
     fft_signal = abs(fft(signal))
     main_signal = find_main_signal(fft_signal)

@@ -12,7 +12,7 @@ from scipy.signal import decimate
 def find_main_signal(signal):
     processed_signal = signal
     decimated = []
-    for i in range(1, 7):
+    for i in range(2, 6):
         decimated.append(decimate(signal, i))
 
     for i in range( len(decimated)):
@@ -26,7 +26,7 @@ def find_main_signal(signal):
 def main():
 
     correct_recognitions = 0
-    for i in range(2,92):
+    for i in range(2, 92):
         if i == 8:
             continue
         print(i)
@@ -49,7 +49,9 @@ def main():
         print('W pliku: ' + correct_gender)
         if(len(signal.shape) != 1): # niektóre dźwięki mają dwa kanaly- wybieramy jeden
             signal = [ x[0] for x in signal ]
-        
+
+        signal = signal * scipy.signal.kaiser(len(signal), 14)
+
         fft_signal = abs(fft(signal))
         main_signal = find_main_signal(fft_signal)
         amp_max = max(main_signal[200:]) # odcinamy te początkowe, bo tam zazwyczaj są nieinteresujące nas wartości
